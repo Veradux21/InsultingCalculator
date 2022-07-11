@@ -28,4 +28,7 @@ button {
     min-height: 100px;
     background-color: rgb(232, 194, 243);
     border-radius: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

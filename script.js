@@ -42,3 +42,28 @@ const operate = (operator, ...numbers) => {
     }
     return result;
 };
+
+const updateText = (...objects) => {
+    const display = document.querySelector('#display')
+}
+
+const manageValues = (e) => {
+  if (e.keyCode > 0){
+    operatorVar = e.dataset.operator;
+    console.log("Set operator to ", e.dataset.operator);
+  } else if (operatorVar == 0) {
+    num0Var = parseInt(`"${num0Var}"` + `"${e.innerText}"`)
+    console.log(num0Var)
+  }
+}
+
+const insult = () => {
+
+}
+
+let operatorVar = 0;
+let num0Var = 0;
+let num1Var = 0;
+
+const buttons = Array.from(document.querySelectorAll('button'));
+buttons.forEach(button => button.addEventListener('click', manageValues));
