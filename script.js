@@ -28,7 +28,7 @@ const zeroInsultsList = [
   "Only you could screw up this terribly simple calculator so much that you get a result with no numbers in it.",
   "Infinity! Like your mother's circumference!",
   "Infinity! The inverse of your IQ!",
-  "Infinity! Make it negative and you've got the number of wrinkles in your brain!"
+  "Infinity! Equal to the depth of your hubris!"
 ]
 
 const sum = function(...arg) {
