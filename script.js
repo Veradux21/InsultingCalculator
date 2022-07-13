@@ -44,17 +44,25 @@ const operate = (operator, ...numbers) => {
 };
 
 const updateText = (...objects) => {
-    const display = document.querySelector('#display')
+    const display = document.querySelector('#display');
+    if (operatorVar == 0){
+      display.innerText = `${num0Var}`
+    } else if (num1Var == 0){
+      display.innerText = `${num0Var} ${operatorVar}`
+    } else {
+      display.innerText = `${num0Var} ${operatorVar} ${num1Var}`
+    };
 }
 
 const manageValues = (e) => {
-  if (e.keyCode > 0){
-    operatorVar = e.dataset.operator;
-    console.log("Set operator to ", e.dataset.operator);
+  if (e.target.dataset.operator > 0){
+    operatorVar = e.target.dataset.operator;
+    console.log("Set operator to ", e.target.dataset.operator);
   } else if (operatorVar == 0) {
-    num0Var = parseInt(`"${num0Var}"` + `"${e.innerText}"`)
+    num0Var = parseInt(num0Var + e.target.innerText)
     console.log(num0Var)
-  }
+  };
+  updateText(num0Var,operatorVar,num1Var);
 }
 
 const insult = () => {
