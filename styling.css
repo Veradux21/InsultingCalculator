@@ -32,3 +32,7 @@ button {
     align-items: center;
     justify-content: center;
 }
+
+.insulter{
+    max-width: 50%;
+}

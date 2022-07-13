@@ -16,7 +16,19 @@ const insultsList = [
   "The only thing weaker than your math skills is your hairline",
   "You're the kind of person to bring out a guitar at a party and play a traumatizing acoustic rendition of Wonderwall",
   "Jellyfish have survived for 600 million years without a brain. At least there's some hope for you.",
-  "Incredible... when you move your head it sounds like maracas."
+  "Incredible... when you move your head it sounds like maracas.",
+  "Oh dear, even being in your vicinity has driven me to the brink of idiocy.",
+  "You, I, and anyone within a nautical mile is measurably dumber for being involved in this calculation.",
+  "Congratulations, clearly your brain has just achieved the slowest neuron firing in all of human history!",
+  "I'm genuinely considering selling you to a nearby medical university so they can study your cranium and its lack of contents."
+]
+
+const zeroInsultsList = [
+  "Great, you just tore a hole in the fabric of reality. Way to go, genius.",
+  "Only you could screw up this terribly simple calculator so much that you get a result with no numbers in it.",
+  "Infinity! Like your mother's circumference!",
+  "Infinity! The inverse of your IQ!",
+  "Infinity! Make it negative and you've got the number of wrinkles in your brain!"
 ]
 
 const sum = function(...arg) {
@@ -102,7 +114,14 @@ const manageValues = (e) => {
 }
 
 const insult = () => {
-
+ const insulter = document.querySelector('.insulter')
+ let insult = document.createElement('p');
+ if (num0Var == Infinity) {
+  insult.textContent = zeroInsultsList[Math.floor(Math.random() * zeroInsultsList.length)];
+} else {
+  insult.textContent = insultsList[Math.floor(Math.random() * insultsList.length)];
+}
+ insulter.insertBefore(insult, insulter.firstChild);
 }
 
 let operatorVisual;
