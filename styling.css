@@ -1,6 +1,6 @@
 body {
     display: flex;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     gap: 15px;
     justify-content: space-evenly;
 }
