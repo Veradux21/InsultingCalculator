@@ -31,6 +31,17 @@ const zeroInsultsList = [
   "Infinity! Equal to the depth of your hubris!"
 ]
 
+const insult = () => {
+  const insulter = document.querySelector('.insulter')
+  let insult = document.createElement('p');
+  if (num0Var == Infinity) {
+   insult.textContent = zeroInsultsList[Math.floor(Math.random() * zeroInsultsList.length)];
+ } else {
+   insult.textContent = insultsList[Math.floor(Math.random() * insultsList.length)];
+ }
+  insulter.insertBefore(insult, insulter.firstChild);
+ }
+
 const sum = function(...arg) {
     return arg.reduce((total, args) => total + args, 0)
   };
@@ -76,15 +87,36 @@ const operate = (operator, ...numbers) => {
     return result;
 };
 
-const updateText = (...objects) => {
-    const display = document.querySelector('#display');
-    if (operatorVar == 0){
-      display.innerText = `${num0Var}`
-    } else if (num1Var == 0){
-      display.innerText = `${num0Var} ${operatorVisual}`
-    } else {
-      display.innerText = `${num0Var} ${operatorVisual} ${num1Var}`
-    };
+const manageValuesArray = (e) => {
+  //Identify whether button is operator, numeral, other
+  if (e.target.dataset.operator == "equals"){
+  } else if (e.target.dataset.operator == "clear"){ // Clear button empties all arrays
+    operatorArray = [];
+    operatorVisArray = [];
+    numArray = [0];
+    console.log("Clear");
+  } else if (e.target.dataset.operator > 0){
+    operatorArray.push(parseInt(e.target.dataset.operator))
+    operatorVisArray.push(`${e.target.innerText}`)
+    console.log("operator ", operatorVisArray, " + ", operatorArray)
+  } else {
+    numArray.push(e.target.innerText)
+    console.log("Add number: ", numArray)
+  }
+  // Managing Display Value
+
+  updateText();
+}
+
+const updateText = () => {
+  displayString = numArray[0].toString();
+  for (let i = 1; i < numArray.length; i++) {
+    displayString = `${displayString}`+ " " + operatorVisArray[i - 1] + " ";
+    displayString = displayString + numArray[i].toString();
+  }  
+  const display = document.querySelector('#display');
+  display.innerText = `${displayString}`
+  console.log("Update Text")
 }
 
 const manageValues = (e) => {
@@ -113,24 +145,9 @@ const manageValues = (e) => {
   updateText(num0Var,operatorVisual,num1Var);
 }
 
-const manageValuesArray = (e) => {
-  displayString = numArray[0].toString();
-  for (let i = 1; i < numArray.length; i++) {
-    displayString = `${displayString}` + operatorArray[i - 1];
-    displayString = displayString + numArray[i].toString();
-  }
-}
 
-const insult = () => {
- const insulter = document.querySelector('.insulter')
- let insult = document.createElement('p');
- if (num0Var == Infinity) {
-  insult.textContent = zeroInsultsList[Math.floor(Math.random() * zeroInsultsList.length)];
-} else {
-  insult.textContent = insultsList[Math.floor(Math.random() * insultsList.length)];
-}
- insulter.insertBefore(insult, insulter.firstChild);
-}
+
+
 
 let operatorVisual;
 let operatorVar = 0;
@@ -140,16 +157,17 @@ let num1Var = 0;
 let displayString;
 let numArray = [];
 let operatorArray = [];
+let operatorVisArray = [];
 
 const buttons = Array.from(document.querySelectorAll('button'));
-buttons.forEach(button => button.addEventListener('click', manageValues));
+buttons.forEach(button => button.addEventListener('click', /* manageValues */ manageValuesArray));
 
 /* display text script
 numArray.push(30)
 numArray.push(4)
 numArray.push(5)
-operatorArray.push("*")
-operatorArray.push("+")
+operatorVisArray.push("*")
+operatorVisArray.push("+")
 manageValuesArray()
 displayString
 */
