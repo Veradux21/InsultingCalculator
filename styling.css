@@ -3,11 +3,16 @@ body {
     flex-wrap: wrap;
     gap: 15px;
     justify-content: space-evenly;
+    background-color: #344E41;
 }
 
 button {
     height: 50px;
     width: 50px;
+    color: #344e41;
+    background-color: #A3b18a;
+    border-radius: 20%;
+    border-color: #588157;
 }
 
 .column{
@@ -26,8 +31,10 @@ button {
 
 #display {
     min-height: 100px;
-    background-color: rgb(232, 194, 243);
-    border-radius: 15%;
+    background-color: #DAD7CD;
+    color: #344E41;
+    border: 2px , dashed, hsl(131, 22%, 29%);
+    border-radius: 6%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,4 +42,5 @@ button {
 
 .insulter{
     max-width: 50%;
+    color:#DAD7CD;
 }

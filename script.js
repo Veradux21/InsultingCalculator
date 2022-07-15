@@ -113,6 +113,14 @@ const manageValues = (e) => {
   updateText(num0Var,operatorVisual,num1Var);
 }
 
+const manageValuesArray = (e) => {
+  displayString = numArray[0].toString();
+  for (let i = 1; i < numArray.length; i++) {
+    displayString = `${displayString}` + operatorArray[i - 1];
+    displayString = displayString + numArray[i].toString();
+  }
+}
+
 const insult = () => {
  const insulter = document.querySelector('.insulter')
  let insult = document.createElement('p');
@@ -129,5 +137,19 @@ let operatorVar = 0;
 let num0Var = 0;
 let num1Var = 0;
 
+let displayString;
+let numArray = [];
+let operatorArray = [];
+
 const buttons = Array.from(document.querySelectorAll('button'));
 buttons.forEach(button => button.addEventListener('click', manageValues));
+
+/* display text script
+numArray.push(30)
+numArray.push(4)
+numArray.push(5)
+operatorArray.push("*")
+operatorArray.push("+")
+manageValuesArray()
+displayString
+*/
